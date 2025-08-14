@@ -1,0 +1,38 @@
+services:
+  minecraft-server:
+    image: itzg/minecraft-server
+    ports:
+      - 25565:25565
+    environment:
+      EULA: "TRUE"
+      TYPE: "FABRIC"
+      OVERRIDE_SERVER_PROPERTIES: "TRUE"
+      MEMORY: 4G
+      MOTD: "World 1"
+      ICON: "https://i.ibb.co/zJFc8vV/forest-fox.png"
+      DIFFICULTY: "hard"
+      WHITELIST: dashydasher1,masanmacan
+      OPS: dashydasher1
+      ENABLE_RCON: "TRUE"
+      RCON_PASSWORD: "admin123"
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    volumes:
+      - ./world1-minecraft-data:/data
+      - ./world1-minecraft-mods:/data/mods
+
+  minecraft-server-backup:
+    image: itzg/mc-backup
+    depends_on:
+      - minecraft-server
+    environment:
+      INITIAL_DELAY: "90"
+      BACKUP_INTERVAL: "8h"
+      PRUNE_BACKUPS_DAYS: "14"
+      RCON_HOST: "minecraft-server"
+      RCON_PASSWORD: "admin123"
+    restart: unless-stopped
+    volumes:
+      - ./world1-minecraft-data:/data:ro
+      - ./world1-minecraft-backups:/backups
