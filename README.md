@@ -18,19 +18,19 @@ My personal set up and instructions for running Minecraft servers.
    - `minecraft-server` service:
      - Change `MOTD` to the display name of your world
      - Change `DIFFICULTY`, `WHITELIST` and `OPS` to the desired settings
-     - Change `volumes` to the desired paths (left side) for your world data and mods (example: `./world1-minecraft-data` and `./world1-minecraft-mods`)
+     - Change `volumes` to the desired paths (left side) for your world data and mods (example: `./data` and `./mods`)
      - Change `RCON_PASSWORD` to something strong
      - Change `MEMORY` to the desired amount of memory
-     - Change host ports (left sided) to desired ports for you minecraft and RCON server
+     - Change host ports (left sided) to desired ports for you minecraft server
      - (Optional) Change the `ICON` to the icon you want to use for your world - you can use the links provided in `Icons` section or your own
    - `minecraft-server-backup` service:
-     - Change `RCON_PASSWORD` to match values in the `minecraft-server` service (`RCON_PORT` should stay the same because container port is used)
-     - Change `volumes` to the desired paths (left side) for your world data and backups (example: `./world1-minecraft-data` and `./world1-minecraft-backups`)
+     - Change `RCON_PASSWORD` to match values in the `minecraft-server` service
+     - Change `volumes` to the desired paths (left side) for your world data and backups (example: `./data` and `./backups`)
      - (Optional) Change `BACKUP_INTERVAL` and `PRUNE_BACKUPS_DAYS` to desired values, for more options see [mc-backup](https://github.com/itzg/mc-backup)
 
 3. (Optional) Set up mods
-   - Create an empty `world1-minecraft-mods` directory inside your `world1` directory
-   - Place your mods inside the `world1-minecraft-mods` directory - some useful mods are listed in `Mods` section
+   - Create an empty `mods` directory inside your `world1` directory
+   - Place your mods inside the `mods` directory - some useful mods are listed in `Mods` section
 
 4. Run `docker compose up -d` inside the `world1` directory to start your server
    - (Optional) Run `docker compose logs -f` to follow the logs

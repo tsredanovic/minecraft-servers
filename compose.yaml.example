@@ -19,8 +19,8 @@ services:
     stdin_open: true
     restart: unless-stopped
     volumes:
-      - ./world1-minecraft-data:/data
-      - ./world1-minecraft-mods:/data/mods
+      - ./data:/data
+      - ./mods:/data/mods
 
   minecraft-server-backup:
     image: itzg/mc-backup
@@ -34,5 +34,5 @@ services:
       RCON_PASSWORD: "admin123"
     restart: unless-stopped
     volumes:
-      - ./world1-minecraft-data:/data:ro
-      - ./world1-minecraft-backups:/backups
+      - ./data:/data:ro
+      - ./backups:/backups
