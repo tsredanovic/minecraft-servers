@@ -1,11 +1,14 @@
 # Minecraft Servers
 
+My personal set up and instructions for running Minecraft servers.
+
 
 ## First time set up instructions
 
 1. Clone this repository
 
 2. Create an empty `worlds` directory inside the root `minecraft-server` directory
+
 
 ## World set up instructions
 
@@ -58,6 +61,7 @@
 
 7. (Optional) Automatically update A records on CloudFlare
    - Follow the instructions in [DynamicFlare](https://github.com/tsredanovic/dynamicflare)
+
 
 ## Mods
 
